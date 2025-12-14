@@ -46,10 +46,16 @@ export const HeroSlider = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
           />
-          {/* Fade edges - all sides */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
+          {/* Strong gradient around all edges - vignette effect */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background))_100%)]" />
+          {/* Top fade */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-transparent" style={{ height: '40%' }} />
+          {/* Bottom fade */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+          {/* Left fade */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" style={{ width: '40%' }} />
+          {/* Right fade */}
+          <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent" style={{ width: '40%', marginLeft: 'auto' }} />
         </motion.div>
       </AnimatePresence>
 
@@ -142,6 +148,9 @@ export const HeroSlider = () => {
           </button>
         </div>
       </div>
+
+      {/* Bottom gradient for section transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-20 pointer-events-none" />
     </section>
   );
 };

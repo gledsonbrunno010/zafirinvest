@@ -31,7 +31,11 @@ export const Partners = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-12 md:py-16 bg-background border-y border-border/30">
+    <section className="py-12 md:py-16 bg-background border-y border-border/30 relative">
+      {/* Top gradient for section transition */}
+      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-background to-transparent z-10" />
+      {/* Bottom gradient for section transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent z-10" />
       <div className="container mx-auto px-4" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
