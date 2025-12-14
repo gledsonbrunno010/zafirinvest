@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Check, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import officeNegotiation from "@/assets/office-negotiation.jpg";
 
 const comparisonData = [
   {
@@ -37,16 +38,23 @@ const comparisonData = [
   },
 ];
 
+const whatsappUrl = "https://wa.me/5561994583188?text=Olá.%20Gostaria%20de%20agendar%20uma%20avaliação%20com%20a%20Zafir%20Invest.";
+
 export const Comparison = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="comparativo" className="section-padding bg-background relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 to-transparent" />
+    <section id="comparativo" className="section-padding relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${officeNegotiation})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
 
-      <div className="container mx-auto relative" ref={ref}>
+      <div className="container mx-auto relative z-10" ref={ref}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -58,9 +66,12 @@ export const Comparison = () => {
             Compare e escolha
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
-            Quem entende de dinheiro,{" "}
-            <span className="text-gradient-gold">escolhe consórcio</span>
+            Quem Entende de Dinheiro,{" "}
+            <span className="text-gradient-gold">Escolhe o Investimento Certo</span>
           </h2>
+          <p className="text-lg text-muted-foreground mt-4">
+            Veja o comparativo e escolha a melhor opção para você
+          </p>
         </motion.div>
 
         {/* Comparison Table */}
@@ -77,10 +88,12 @@ export const Comparison = () => {
                 Característica
               </span>
             </div>
-            <div className="p-4 bg-primary/10 rounded-t-xl text-center border border-primary/20 border-b-0">
+            {/* Highlighted Consortium Column */}
+            <div className="p-4 bg-primary/20 rounded-t-xl text-center border-2 border-primary/40 border-b-0 shadow-lg shadow-primary/20">
               <span className="text-primary font-bold text-lg">Consórcio</span>
             </div>
-            <div className="p-4 bg-secondary/50 rounded-t-xl text-center">
+            {/* Highlighted Financing Column */}
+            <div className="p-4 bg-secondary/70 rounded-t-xl text-center border border-border/50 border-b-0">
               <span className="text-muted-foreground font-medium text-lg">
                 Financiamento
               </span>
@@ -101,7 +114,7 @@ export const Comparison = () => {
                   {row.feature}
                 </span>
               </div>
-              <div className="p-4 bg-primary/5 border-x border-primary/10 flex items-center justify-center gap-2">
+              <div className="p-4 bg-primary/10 border-x-2 border-primary/30 flex items-center justify-center gap-2">
                 {row.consortium.value ? (
                   <Check className="w-5 h-5 text-green-500" />
                 ) : (
@@ -111,7 +124,7 @@ export const Comparison = () => {
                   {row.consortium.text}
                 </span>
               </div>
-              <div className="p-4 bg-secondary/30 flex items-center justify-center gap-2">
+              <div className="p-4 bg-secondary/50 border-x border-border/30 flex items-center justify-center gap-2">
                 {row.financing.value ? (
                   <Check className="w-5 h-5 text-muted-foreground" />
                 ) : (
@@ -127,12 +140,12 @@ export const Comparison = () => {
           {/* Footer */}
           <div className="grid grid-cols-3 gap-4">
             <div />
-            <div className="p-4 bg-primary/10 rounded-b-xl border border-primary/20 border-t-0 flex items-center justify-center">
+            <div className="p-4 bg-primary/20 rounded-b-xl border-2 border-primary/40 border-t-0 flex items-center justify-center shadow-lg shadow-primary/20">
               <span className="text-primary font-bold text-sm md:text-base">
                 Melhor opção ✓
               </span>
             </div>
-            <div className="p-4 bg-secondary/50 rounded-b-xl" />
+            <div className="p-4 bg-secondary/70 rounded-b-xl border border-border/50 border-t-0" />
           </div>
         </motion.div>
 
@@ -144,11 +157,14 @@ export const Comparison = () => {
           className="text-center mt-12"
         >
           <Button
+            asChild
             size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse hover:animate-none"
           >
-            Quero pagar menos e investir melhor
-            <ArrowRight className="ml-2 w-5 h-5" />
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              Quero pagar menos e investir melhor
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </a>
           </Button>
         </motion.div>
       </div>

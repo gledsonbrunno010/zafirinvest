@@ -7,6 +7,7 @@ import heroHouse from "@/assets/hero-house.jpg";
 import heroVehicles from "@/assets/hero-vehicles.jpg";
 import heroTruck from "@/assets/hero-truck.jpg";
 import heroMachinery from "@/assets/hero-machinery.jpg";
+import futuristicChartBg from "@/assets/futuristic-chart-bg.jpg";
 
 const consortiumTypes = [
   {
@@ -39,13 +40,25 @@ const consortiumTypes = [
   },
 ];
 
+const whatsappUrl = "https://wa.me/5561994583188?text=Olá.%20Gostaria%20de%20agendar%20uma%20avaliação%20com%20a%20Zafir%20Invest.";
+
 export const ConsortiumTypes = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="consorcios" className="section-padding bg-secondary/20 relative">
-      <div className="container mx-auto" ref={ref}>
+    <section 
+      id="consorcios" 
+      className="section-padding relative overflow-hidden"
+    >
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-30"
+        style={{ backgroundImage: `url(${futuristicChartBg})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+
+      <div className="container mx-auto relative z-10" ref={ref}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -60,9 +73,12 @@ export const ConsortiumTypes = () => {
             Escolha o consórcio{" "}
             <span className="text-gradient-gold">ideal para você</span>
           </h2>
+          <p className="text-lg text-muted-foreground mt-4">
+            Invista hoje mesmo no seu futuro
+          </p>
         </motion.div>
 
-        {/* Cards Grid */}
+        {/* Cards Grid with Yellow Blur */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {consortiumTypes.map((type, index) => (
             <motion.div
@@ -70,36 +86,41 @@ export const ConsortiumTypes = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/3] md:aspect-[16/10]"
+              className="group relative"
             >
-              {/* Background Image */}
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{ backgroundImage: `url(${type.image})` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+              {/* Yellow Blur Effect */}
+              <div className="absolute -inset-1 bg-primary/30 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity" />
+              
+              <div className="relative overflow-hidden rounded-2xl aspect-[4/3] md:aspect-[16/10]">
+                {/* Background Image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{ backgroundImage: `url(${type.image})` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
-              {/* Content */}
-              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 rounded-xl bg-primary/20 backdrop-blur-sm flex items-center justify-center">
-                    <type.icon className="w-6 h-6 text-primary" />
+                {/* Content */}
+                <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 rounded-xl bg-primary/20 backdrop-blur-sm flex items-center justify-center">
+                      <type.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-display font-bold text-foreground">
+                      {type.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                    {type.title}
-                  </h3>
-                </div>
-                <p className="text-muted-foreground mb-2">{type.description}</p>
-                <p className="text-sm text-primary font-semibold">{type.credit}</p>
+                  <p className="text-muted-foreground mb-2">{type.description}</p>
+                  <p className="text-sm text-primary font-semibold">{type.credit}</p>
 
-                {/* Hover Arrow */}
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  whileHover={{ opacity: 1, x: 0 }}
-                  className="absolute top-6 right-6 w-10 h-10 rounded-full bg-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                  <ArrowRight className="w-5 h-5 text-primary-foreground" />
-                </motion.div>
+                  {/* Hover Arrow */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    whileHover={{ opacity: 1, x: 0 }}
+                    className="absolute top-6 right-6 w-10 h-10 rounded-full bg-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <ArrowRight className="w-5 h-5 text-primary-foreground" />
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -113,11 +134,14 @@ export const ConsortiumTypes = () => {
           className="text-center mt-12"
         >
           <Button
+            asChild
             size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse hover:animate-none"
           >
-            Descubra o melhor plano para você
-            <ArrowRight className="ml-2 w-5 h-5" />
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              Descubra o melhor plano para você
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </a>
           </Button>
         </motion.div>
       </div>

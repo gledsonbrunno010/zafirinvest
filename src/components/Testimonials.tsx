@@ -80,8 +80,8 @@ export const Testimonials = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Duplicate for infinite scroll effect
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  // Triple for smooth infinite loop
+  const tripleTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   return (
     <section id="avaliacoes" className="section-padding bg-background relative overflow-hidden">
@@ -102,32 +102,33 @@ export const Testimonials = () => {
           </h2>
           <div className="flex items-center justify-center gap-1 mt-4">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 fill-primary text-primary" />
+              <Star key={i} className={`w-6 h-6 ${i < 4 ? 'fill-primary text-primary' : 'fill-primary/50 text-primary/50'}`} />
             ))}
             <span className="ml-2 text-muted-foreground">
-              Avaliação 5.0 no Google
+              Avaliação 4.5 no Google
             </span>
           </div>
         </motion.div>
       </div>
 
-      {/* Testimonials Marquee */}
+      {/* Testimonials Marquee - Infinite Loop */}
       <div className="relative overflow-hidden py-4">
         <motion.div
           className="flex gap-6"
           animate={{
-            x: [0, -50 * testimonials.length],
+            x: [0, -((testimonials.length) * 400)],
           }}
           transition={{
             x: {
-              duration: 40,
+              duration: 60,
               repeat: Infinity,
               ease: "linear",
+              repeatType: "loop",
             },
           }}
           style={{ width: "fit-content" }}
         >
-          {duplicatedTestimonials.map((testimonial, index) => (
+          {tripleTestimonials.map((testimonial, index) => (
             <div
               key={`${testimonial.name}-${index}`}
               className="flex-shrink-0 w-80 md:w-96"
