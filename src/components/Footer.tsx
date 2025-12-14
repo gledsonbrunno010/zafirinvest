@@ -1,0 +1,166 @@
+import { motion } from "framer-motion";
+import { Instagram, Facebook, Linkedin, Youtube, Shield, Award, Lock } from "lucide-react";
+
+const footerLinks = {
+  company: [
+    { label: "Sobre nós", href: "#sobre" },
+    { label: "Contato", href: "#contato" },
+    { label: "Avaliações", href: "#avaliacoes" },
+  ],
+  services: [
+    { label: "Consórcio de Imóveis", href: "#consorcios" },
+    { label: "Consórcio de Veículos", href: "#consorcios" },
+    { label: "Consórcio de Caminhões", href: "#consorcios" },
+    { label: "Simulação", href: "#simulacao" },
+  ],
+  legal: [
+    { label: "Política de Privacidade", href: "#" },
+    { label: "Termos de Uso", href: "#" },
+    { label: "LGPD", href: "#" },
+  ],
+};
+
+const socialLinks = [
+  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Youtube, href: "#", label: "YouTube" },
+];
+
+const certifications = [
+  { icon: Shield, label: "Banco Central" },
+  { icon: Award, label: "ABAC" },
+  { icon: Lock, label: "LGPD Compliance" },
+];
+
+export const Footer = () => {
+  return (
+    <footer className="bg-card border-t border-border">
+      {/* Main Footer */}
+      <div className="container mx-auto px-4 py-12 md:py-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-1">
+            <a href="#inicio" className="inline-block mb-4">
+              <span className="text-2xl font-display font-bold text-foreground">
+                Zafir<span className="text-primary">Invest</span>
+              </span>
+            </a>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+              Transformando sonhos em patrimônio com consórcios inteligentes e
+              planejamento financeiro.
+            </p>
+
+            {/* Social Links */}
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  whileHover={{ scale: 1.1 }}
+                  className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h4 className="font-display font-bold text-foreground mb-4">
+              Empresa
+            </h4>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services Links */}
+          <div>
+            <h4 className="font-display font-bold text-foreground mb-4">
+              Serviços
+            </h4>
+            <ul className="space-y-3">
+              {footerLinks.services.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal Links */}
+          <div>
+            <h4 className="font-display font-bold text-foreground mb-4">
+              Legal
+            </h4>
+            <ul className="space-y-3">
+              {footerLinks.legal.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Certifications */}
+          <div>
+            <h4 className="font-display font-bold text-foreground mb-4">
+              Certificações
+            </h4>
+            <div className="flex flex-wrap gap-3">
+              {certifications.map((cert) => (
+                <div
+                  key={cert.label}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 border border-border/30"
+                >
+                  <cert.icon className="w-4 h-4 text-primary" />
+                  <span className="text-xs text-muted-foreground">
+                    {cert.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Footer */}
+      <div className="border-t border-border/50">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-muted-foreground text-center md:text-left">
+              © {new Date().getFullYear()} Zafir Invest. Todos os direitos
+              reservados.
+            </p>
+            <p className="text-xs text-muted-foreground/60 text-center md:text-right">
+              Consórcios administrados por empresas regulamentadas pelo Banco
+              Central do Brasil.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};

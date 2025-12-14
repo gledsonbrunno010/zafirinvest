@@ -1,0 +1,126 @@
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { Home, Car, Truck, Cog, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import heroHouse from "@/assets/hero-house.jpg";
+import heroVehicles from "@/assets/hero-vehicles.jpg";
+import heroTruck from "@/assets/hero-truck.jpg";
+import heroMachinery from "@/assets/hero-machinery.jpg";
+
+const consortiumTypes = [
+  {
+    icon: Home,
+    title: "Imóveis",
+    description: "Apartamentos, casas, terrenos e imóveis comerciais",
+    image: heroHouse,
+    credit: "De R$ 100 mil até R$ 2 milhões",
+  },
+  {
+    icon: Car,
+    title: "Carros e Motos",
+    description: "Veículos novos e seminovos das melhores marcas",
+    image: heroVehicles,
+    credit: "De R$ 30 mil até R$ 500 mil",
+  },
+  {
+    icon: Truck,
+    title: "Caminhões",
+    description: "Carretas, caminhões e veículos pesados",
+    image: heroTruck,
+    credit: "De R$ 150 mil até R$ 1,5 milhão",
+  },
+  {
+    icon: Cog,
+    title: "Máquinas Pesadas",
+    description: "Retroescavadeiras, tratores e equipamentos",
+    image: heroMachinery,
+    credit: "De R$ 200 mil até R$ 3 milhões",
+  },
+];
+
+export const ConsortiumTypes = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section id="consorcios" className="section-padding bg-secondary/20 relative">
+      <div className="container mx-auto" ref={ref}>
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 md:mb-16"
+        >
+          <span className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium mb-4">
+            Tipos de Consórcio
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
+            Escolha o consórcio{" "}
+            <span className="text-gradient-gold">ideal para você</span>
+          </h2>
+        </motion.div>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {consortiumTypes.map((type, index) => (
+            <motion.div
+              key={type.title}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="group relative overflow-hidden rounded-2xl aspect-[4/3] md:aspect-[16/10]"
+            >
+              {/* Background Image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{ backgroundImage: `url(${type.image})` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+
+              {/* Content */}
+              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 rounded-xl bg-primary/20 backdrop-blur-sm flex items-center justify-center">
+                    <type.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-foreground">
+                    {type.title}
+                  </h3>
+                </div>
+                <p className="text-muted-foreground mb-2">{type.description}</p>
+                <p className="text-sm text-primary font-semibold">{type.credit}</p>
+
+                {/* Hover Arrow */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  whileHover={{ opacity: 1, x: 0 }}
+                  className="absolute top-6 right-6 w-10 h-10 rounded-full bg-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <ArrowRight className="w-5 h-5 text-primary-foreground" />
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="text-center mt-12"
+        >
+          <Button
+            size="lg"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+          >
+            Descubra o melhor plano para você
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
