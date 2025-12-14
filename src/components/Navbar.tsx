@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoZafir from "@/assets/logo-zafir.png";
 
 const navLinks = [
   { label: "Início", href: "#inicio" },
@@ -12,6 +13,8 @@ const navLinks = [
   { label: "Sobre", href: "#sobre" },
   { label: "Contato", href: "#contato" },
 ];
+
+const whatsappUrl = "https://wa.me/5561994583188?text=Olá.%20Gostaria%20de%20agendar%20uma%20avaliação%20com%20a%20Zafir%20Invest.";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,9 +47,11 @@ export const Navbar = () => {
             className="flex items-center gap-2"
             whileHover={{ scale: 1.02 }}
           >
-            <span className="text-xl md:text-2xl font-display font-bold text-foreground">
-              Zafir<span className="text-primary">Invest</span>
-            </span>
+            <img 
+              src={logoZafir} 
+              alt="Zafir Invest" 
+              className="h-8 md:h-10 w-auto brightness-0 invert"
+            />
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -69,11 +74,14 @@ export const Navbar = () => {
           {/* CTA Button Desktop */}
           <div className="hidden lg:flex items-center gap-4">
             <Button
+              asChild
               variant="default"
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
             >
-              <Phone className="w-4 h-4 mr-2" />
-              Falar com Especialista
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                <Phone className="w-4 h-4 mr-2" />
+                Falar com Especialista
+              </a>
             </Button>
           </div>
 
@@ -112,11 +120,14 @@ export const Navbar = () => {
                 </motion.a>
               ))}
               <Button
+                asChild
                 variant="default"
                 className="w-full mt-4 bg-primary text-primary-foreground font-semibold py-6"
               >
-                <Phone className="w-5 h-5 mr-2" />
-                Falar com Especialista
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Falar com Especialista
+                </a>
               </Button>
             </div>
           </motion.div>

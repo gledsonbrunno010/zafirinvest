@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Shield, Target, TrendingUp, Users, Award, CheckCircle } from "lucide-react";
+import { Shield, Target, TrendingUp, Users, CheckCircle } from "lucide-react";
+import aboutOfficeBg from "@/assets/about-office-bg.jpg";
 
 const values = [
   {
@@ -27,10 +28,10 @@ const values = [
 ];
 
 const stats = [
-  { value: "500+", label: "Clientes atendidos" },
-  { value: "R$ 50M+", label: "Em cartas administradas" },
-  { value: "98%", label: "Satisfação dos clientes" },
-  { value: "10+", label: "Anos de experiência" },
+  { value: "R$ 50M+", label: "Em créditos liberados" },
+  { value: "R$ 80M+", label: "Em Crédito Sob Gestão" },
+  { value: "98%", label: "Satisfação dos Clientes" },
+  { value: "4+", label: "Anos de Experiência" },
 ];
 
 export const About = () => {
@@ -38,8 +39,17 @@ export const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="sobre" className="section-padding bg-secondary/20 relative overflow-hidden">
-      <div className="container mx-auto" ref={ref}>
+    <section id="sobre" className="section-padding relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${aboutOfficeBg})` }}
+      />
+      {/* Left gradient for readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/60" />
+      <div className="absolute inset-0 bg-background/40" />
+
+      <div className="container mx-auto relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <motion.div
@@ -89,7 +99,7 @@ export const About = () => {
             </div>
           </motion.div>
 
-          {/* Right Content - Values Grid */}
+          {/* Right Content - Values Grid with Yellow Blur */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -102,17 +112,22 @@ export const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                className="glass-card p-6 hover:bg-card/70 transition-all group"
+                className="relative group"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <value.icon className="w-6 h-6 text-primary" />
+                {/* Yellow Blur Effect */}
+                <div className="absolute -inset-1 bg-primary/25 rounded-2xl blur-lg opacity-50 group-hover:opacity-70 transition-opacity" />
+                
+                <div className="relative glass-card p-6 hover:bg-card/70 transition-all">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <value.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-display font-bold text-foreground mb-2">
+                    {value.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-display font-bold text-foreground mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {value.description}
-                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -125,7 +140,7 @@ export const About = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-16 border-t border-border/30"
         >
-          {stats.map((stat, index) => (
+          {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <span className="text-3xl md:text-4xl font-display font-bold text-gradient-gold">
                 {stat.value}

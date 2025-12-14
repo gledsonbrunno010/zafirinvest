@@ -8,27 +8,13 @@ import heroVehicles from "@/assets/hero-vehicles.jpg";
 import heroMachinery from "@/assets/hero-machinery.jpg";
 
 const slides = [
-  {
-    image: heroHouse,
-    title: "Imóveis",
-    subtitle: "Sua casa própria sem juros abusivos",
-  },
-  {
-    image: heroVehicles,
-    title: "Veículos",
-    subtitle: "Carros e motos com parcelas que cabem no bolso",
-  },
-  {
-    image: heroTruck,
-    title: "Caminhões",
-    subtitle: "Expanda sua frota com inteligência",
-  },
-  {
-    image: heroMachinery,
-    title: "Máquinas",
-    subtitle: "Equipamentos pesados para seu negócio",
-  },
+  { image: heroHouse },
+  { image: heroVehicles },
+  { image: heroTruck },
+  { image: heroMachinery },
 ];
+
+const whatsappUrl = "https://wa.me/5561994583188?text=Olá.%20Gostaria%20de%20agendar%20uma%20avaliação%20com%20a%20Zafir%20Invest.";
 
 export const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -46,7 +32,7 @@ export const HeroSlider = () => {
 
   return (
     <section id="inicio" className="relative h-screen w-full overflow-hidden">
-      {/* Background Slides */}
+      {/* Background Slides with Fade Edges */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -60,65 +46,70 @@ export const HeroSlider = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/40" />
+          {/* Fade edges - all sides */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+          <div className="absolute inset-0 bg-background/30" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Content */}
+      {/* Static Content */}
       <div className="relative z-10 h-full flex flex-col justify-center container mx-auto px-4">
         <div className="max-w-3xl">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.5 }}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Category Badge */}
+            <motion.span
+              className="inline-block px-4 py-2 bg-primary/20 border border-primary/30 rounded-full text-primary text-sm font-semibold mb-6"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
             >
-              {/* Category Badge */}
-              <motion.span
-                className="inline-block px-4 py-2 bg-primary/20 border border-primary/30 rounded-full text-primary text-sm font-semibold mb-6"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
+              Consórcio Inteligente
+            </motion.span>
+
+            {/* Main Headline - Static */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6">
+              Transforme seu dinheiro em{" "}
+              <span className="text-gradient-gold">patrimônio sólido</span>,
+              sem juros abusivos.
+            </h1>
+
+            {/* Subheadline - Static */}
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8">
+              Invista em imóveis, veículos e equipamentos por consórcio com
+              estratégia, segurança e planejamento inteligente.
+            </p>
+
+            {/* CTAs - Static */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse hover:animate-none group"
               >
-                Consórcio de {slides[currentSlide].title}
-              </motion.span>
-
-              {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6">
-                Transforme seu dinheiro em{" "}
-                <span className="text-gradient-gold">patrimônio sólido</span>,
-                sem juros abusivos.
-              </h1>
-
-              {/* Subheadline */}
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8">
-                Invista em imóveis, veículos e equipamentos por consórcio com
-                estratégia, segurança e planejamento inteligente.
-              </p>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 group"
-                >
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   Simular Meu Investimento Agora
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-foreground/30 text-foreground hover:bg-foreground/10 font-semibold text-base px-8 py-6"
-                >
+                </a>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-foreground/30 text-foreground hover:bg-foreground/10 font-semibold text-base px-8 py-6"
+              >
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <Phone className="mr-2 w-5 h-5" />
                   Falar com Especialista
-                </Button>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                </a>
+              </Button>
+            </div>
+          </motion.div>
         </div>
 
         {/* Slide Indicators */}
@@ -150,25 +141,6 @@ export const HeroSlider = () => {
           >
             <ChevronRight className="w-5 h-5 text-foreground" />
           </button>
-        </div>
-      </div>
-
-      {/* Category Pills Mobile */}
-      <div className="absolute bottom-24 left-0 right-0 overflow-x-auto scrollbar-hide md:hidden">
-        <div className="flex gap-2 px-4 pb-2">
-          {slides.map((slide, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                index === currentSlide
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-foreground/10 text-foreground/70 hover:bg-foreground/20"
-              }`}
-            >
-              {slide.title}
-            </button>
-          ))}
         </div>
       </div>
     </section>

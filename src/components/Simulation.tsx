@@ -3,23 +3,64 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
 
-const periods = [
-  { months: 12, label: "12 meses", appreciation: 8 },
-  { months: 24, label: "24 meses", appreciation: 18 },
-  { months: 60, label: "60 meses", appreciation: 45 },
-  { months: 120, label: "120 meses", appreciation: 95 },
+const investmentData = [
+  { 
+    months: 12, 
+    label: "12 meses", 
+    finalValue: 540000, 
+    gain: 40000, 
+    appreciation: 8,
+    chartData: [
+      { name: "Investimento", value: 500000, color: "hsl(var(--muted))" },
+      { name: "Ganho", value: 40000, color: "hsl(var(--primary))" },
+    ]
+  },
+  { 
+    months: 24, 
+    label: "24 meses", 
+    finalValue: 583200, 
+    gain: 83200, 
+    appreciation: 16.6,
+    chartData: [
+      { name: "Investimento", value: 500000, color: "hsl(var(--muted))" },
+      { name: "Ganho", value: 83200, color: "hsl(var(--primary))" },
+    ]
+  },
+  { 
+    months: 48, 
+    label: "48 meses", 
+    finalValue: 680000, 
+    gain: 180000, 
+    appreciation: 36,
+    chartData: [
+      { name: "Investimento", value: 500000, color: "hsl(var(--muted))" },
+      { name: "Ganho", value: 180000, color: "hsl(var(--primary))" },
+    ]
+  },
+  { 
+    months: 120, 
+    label: "120 meses", 
+    finalValue: 1079000, 
+    gain: 579000, 
+    appreciation: 115,
+    chartData: [
+      { name: "Investimento", value: 500000, color: "hsl(var(--muted))" },
+      { name: "Ganho", value: 579000, color: "hsl(var(--primary))" },
+    ]
+  },
 ];
 
 const baseValue = 500000;
+const whatsappUrl = "https://wa.me/5561994583188?text=Olá.%20Gostaria%20de%20agendar%20uma%20avaliação%20com%20a%20Zafir%20Invest.";
 
 export const Simulation = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [selectedPeriod, setSelectedPeriod] = useState(2);
+  const [selectedPeriod, setSelectedPeriod] = useState(0);
 
-  const currentPeriod = periods[selectedPeriod];
-  const finalValue = baseValue * (1 + currentPeriod.appreciation / 100);
+  const currentData = investmentData[selectedPeriod];
 
   return (
     <section id="simulacao" className="section-padding bg-secondary/20 relative overflow-hidden">
@@ -38,10 +79,13 @@ export const Simulation = () => {
             Simulação de Investimento
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
-            Veja como{" "}
-            <span className="text-gradient-gold">R$ 500.000</span> podem
+            Veja como o crédito de{" "}
+            <span className="text-gradient-gold">R$ 500.000,00</span> podem
             trabalhar para você
           </h2>
+          <p className="text-lg text-muted-foreground mt-4">
+            A forma mais inteligente de fazer seu dinheiro render juros
+          </p>
         </motion.div>
 
         {/* Simulation Card */}
@@ -49,11 +93,11 @@ export const Simulation = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-3xl mx-auto glass-card p-6 md:p-10"
+          className="max-w-4xl mx-auto glass-card p-6 md:p-10"
         >
           {/* Period Selector */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
-            {periods.map((period, index) => (
+            {investmentData.map((period, index) => (
               <button
                 key={period.months}
                 onClick={() => setSelectedPeriod(index)}
@@ -77,53 +121,78 @@ export const Simulation = () => {
             ))}
           </div>
 
-          {/* Values Display */}
+          {/* Pie Chart and Values */}
           <div className="grid md:grid-cols-2 gap-6 mb-10">
-            {/* Initial Value */}
-            <div className="bg-secondary/30 rounded-xl p-6 text-center">
-              <span className="text-muted-foreground text-sm block mb-2">
-                Valor da carta
-              </span>
-              <span className="text-3xl md:text-4xl font-display font-bold text-foreground">
-                R$ {baseValue.toLocaleString("pt-BR")}
-              </span>
+            {/* Pie Chart */}
+            <div className="h-64 md:h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={currentData.chartData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={100}
+                    paddingAngle={2}
+                    dataKey="value"
+                    animationDuration={500}
+                  >
+                    {currentData.chartData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip 
+                    formatter={(value: number) => `R$ ${value.toLocaleString("pt-BR")}`}
+                    contentStyle={{
+                      backgroundColor: "hsl(var(--card))",
+                      border: "1px solid hsl(var(--border))",
+                      borderRadius: "8px",
+                    }}
+                  />
+                  <Legend 
+                    formatter={(value) => <span className="text-foreground">{value}</span>}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
             </div>
 
-            {/* Final Value */}
-            <div className="bg-primary/10 border border-primary/20 rounded-xl p-6 text-center relative overflow-hidden">
-              <div className="absolute top-2 right-2">
-                <TrendingUp className="w-6 h-6 text-primary" />
+            {/* Values Display */}
+            <div className="flex flex-col justify-center gap-4">
+              {/* Initial Value */}
+              <div className="bg-secondary/30 rounded-xl p-4 text-center">
+                <span className="text-muted-foreground text-sm block mb-1">
+                  Valor da carta
+                </span>
+                <span className="text-2xl md:text-3xl font-display font-bold text-foreground">
+                  R$ {baseValue.toLocaleString("pt-BR")}
+                </span>
               </div>
-              <span className="text-primary text-sm block mb-2">
-                Patrimônio estimado em {currentPeriod.label}
-              </span>
-              <span className="text-3xl md:text-4xl font-display font-bold text-foreground">
-                R$ {Math.round(finalValue).toLocaleString("pt-BR")}
-              </span>
-              <span className="block text-sm text-primary mt-2">
-                +{currentPeriod.appreciation}% de valorização potencial
-              </span>
-            </div>
-          </div>
 
-          {/* Progress Bar */}
-          <div className="mb-6">
-            <div className="flex justify-between text-sm text-muted-foreground mb-2">
-              <span>Investimento inicial</span>
-              <span>Projeção de crescimento</span>
-            </div>
-            <div className="h-3 bg-secondary rounded-full overflow-hidden">
-              <motion.div
-                className="h-full bg-gradient-to-r from-primary to-gold-light rounded-full"
-                initial={{ width: "0%" }}
-                animate={{
-                  width: `${Math.min(
-                    100,
-                    (currentPeriod.appreciation / 100) * 100 + 50
-                  )}%`,
-                }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-              />
+              {/* Final Value */}
+              <div className="bg-primary/10 border border-primary/20 rounded-xl p-4 text-center relative overflow-hidden">
+                <div className="absolute top-2 right-2">
+                  <TrendingUp className="w-5 h-5 text-primary" />
+                </div>
+                <span className="text-primary text-sm block mb-1">
+                  Valor Final Estimado
+                </span>
+                <span className="text-2xl md:text-3xl font-display font-bold text-foreground">
+                  R$ {currentData.finalValue.toLocaleString("pt-BR")}
+                </span>
+              </div>
+
+              {/* Gain */}
+              <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4 text-center">
+                <span className="text-green-500 text-sm block mb-1">
+                  Ganho Bruto
+                </span>
+                <span className="text-2xl md:text-3xl font-display font-bold text-green-500">
+                  +R$ {currentData.gain.toLocaleString("pt-BR")}
+                </span>
+                <span className="block text-sm text-green-500/80 mt-1">
+                  {currentData.appreciation}% de valorização
+                </span>
+              </div>
             </div>
           </div>
 
@@ -136,11 +205,14 @@ export const Simulation = () => {
           {/* CTA */}
           <div className="text-center">
             <Button
+              asChild
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse hover:animate-none"
             >
-              Simular agora com um especialista
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                Simular agora com um especialista
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </a>
             </Button>
           </div>
         </motion.div>

@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
-import { Instagram, Facebook, Linkedin, Youtube, Shield, Award, Lock } from "lucide-react";
+import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
+import logoZafir from "@/assets/logo-zafir.png";
+import bacenLogo from "@/assets/bacen-logo.jpg";
+import lgpdLogo from "@/assets/lgpd-logo.png";
 
 const footerLinks = {
   company: [
@@ -28,9 +31,8 @@ const socialLinks = [
 ];
 
 const certifications = [
-  { icon: Shield, label: "Banco Central" },
-  { icon: Award, label: "ABAC" },
-  { icon: Lock, label: "LGPD Compliance" },
+  { name: "Banco Central", image: bacenLogo },
+  { name: "LGPD", image: lgpdLogo },
 ];
 
 export const Footer = () => {
@@ -42,13 +44,15 @@ export const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
             <a href="#inicio" className="inline-block mb-4">
-              <span className="text-2xl font-display font-bold text-foreground">
-                Zafir<span className="text-primary">Invest</span>
-              </span>
+              <img 
+                src={logoZafir} 
+                alt="Zafir Invest" 
+                className="h-10 w-auto brightness-0 invert"
+              />
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Transformando sonhos em patrimônio com consórcios inteligentes e
-              planejamento financeiro.
+              Transformando sonhos em patrimônio real com planejamento financeiro e
+              estratégias inteligentes.
             </p>
 
             {/* Social Links */}
@@ -132,13 +136,14 @@ export const Footer = () => {
             <div className="flex flex-wrap gap-3">
               {certifications.map((cert) => (
                 <div
-                  key={cert.label}
+                  key={cert.name}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 border border-border/30"
                 >
-                  <cert.icon className="w-4 h-4 text-primary" />
-                  <span className="text-xs text-muted-foreground">
-                    {cert.label}
-                  </span>
+                  <img 
+                    src={cert.image} 
+                    alt={cert.name} 
+                    className="h-6 w-auto object-contain grayscale opacity-70"
+                  />
                 </div>
               ))}
             </div>

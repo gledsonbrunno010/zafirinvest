@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
+const whatsappUrl = "https://wa.me/5561994583188?text=Olá.%20Gostaria%20de%20agendar%20uma%20avaliação%20com%20a%20Zafir%20Invest.";
+
 export const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -56,7 +58,7 @@ export const Contact = () => {
             {/* Contact Info */}
             <div className="space-y-6">
               <motion.a
-                href="tel:+5511999999999"
+                href="tel:+5561994583188"
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.3 }}
@@ -68,13 +70,13 @@ export const Contact = () => {
                 <div>
                   <p className="text-sm text-muted-foreground">Telefone</p>
                   <p className="text-foreground font-semibold group-hover:text-primary transition-colors">
-                    (11) 99999-9999
+                    (61) 99458-3188
                   </p>
                 </div>
               </motion.a>
 
               <motion.a
-                href="mailto:contato@zafirinvest.com.br"
+                href="mailto:contatozafirinvest@gmail.com"
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.4 }}
@@ -86,7 +88,7 @@ export const Contact = () => {
                 <div>
                   <p className="text-sm text-muted-foreground">E-mail</p>
                   <p className="text-foreground font-semibold group-hover:text-primary transition-colors">
-                    contato@zafirinvest.com.br
+                    contatozafirinvest@gmail.com
                   </p>
                 </div>
               </motion.a>
@@ -103,7 +105,7 @@ export const Contact = () => {
                 <div>
                   <p className="text-sm text-muted-foreground">Localização</p>
                   <p className="text-foreground font-semibold">
-                    São Paulo, SP - Brasil
+                    St. M Norte QNM 34 Área especial 01 - Taguatinga, Brasília - DF, 72145-450
                   </p>
                 </div>
               </motion.div>
@@ -117,22 +119,29 @@ export const Contact = () => {
               className="mt-8"
             >
               <Button
+                asChild
                 size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 w-full sm:w-auto"
+                className="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 w-full sm:w-auto animate-pulse hover:animate-none"
               >
-                <MessageCircle className="mr-2 w-5 h-5" />
-                Chamar no WhatsApp
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="mr-2 w-5 h-5" />
+                  Chamar no WhatsApp
+                </a>
               </Button>
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Form */}
+          {/* Right Content - Form with Yellow Blur */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
           >
-            <form onSubmit={handleSubmit} className="glass-card p-6 md:p-8">
+            {/* Yellow Blur Effect */}
+            <div className="absolute -inset-4 bg-primary/20 rounded-3xl blur-2xl opacity-60" />
+            
+            <form onSubmit={handleSubmit} className="relative glass-card p-6 md:p-8">
               <h3 className="text-xl font-display font-bold text-foreground mb-6">
                 Solicite sua simulação gratuita
               </h3>
@@ -179,7 +188,7 @@ export const Contact = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    placeholder="(11) 99999-9999"
+                    placeholder="(61) 99999-9999"
                     className="bg-secondary/50 border-border/50 focus:border-primary"
                     required
                   />

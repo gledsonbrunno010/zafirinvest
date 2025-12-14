@@ -42,14 +42,14 @@ const Index = () => {
               "Empresa especializada em consórcios de imóveis, veículos e máquinas pesadas em São Paulo.",
             address: {
               "@type": "PostalAddress",
-              addressLocality: "São Paulo",
-              addressRegion: "SP",
+              addressLocality: "Brasília",
+              addressRegion: "DF",
               addressCountry: "BR",
             },
-            telephone: "+55-11-99999-9999",
+            telephone: "+55-61-99458-3188",
             url: "https://zafirinvest.com.br",
             priceRange: "$$",
-            areaServed: "São Paulo",
+            areaServed: "Brasil",
             serviceType: ["Consórcio Imobiliário", "Consórcio de Veículos", "Consórcio de Máquinas"],
           })}
         </script>
