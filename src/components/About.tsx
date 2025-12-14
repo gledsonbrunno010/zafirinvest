@@ -42,12 +42,11 @@ export const About = () => {
     <section id="sobre" className="section-padding relative overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center opacity-60"
         style={{ backgroundImage: `url(${aboutOfficeBg})` }}
       />
       {/* Left gradient for readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/60" />
-      <div className="absolute inset-0 bg-background/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/60 to-background/30" />
 
       <div className="container mx-auto relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">

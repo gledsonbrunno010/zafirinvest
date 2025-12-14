@@ -48,11 +48,11 @@ export const Comparison = () => {
     <section id="comparativo" className="section-padding relative overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center opacity-60"
         style={{ backgroundImage: `url(${officeNegotiation})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
 
       <div className="container mx-auto relative z-10" ref={ref}>
         {/* Section Header */}

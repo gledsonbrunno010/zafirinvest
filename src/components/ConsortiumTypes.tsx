@@ -53,10 +53,10 @@ export const ConsortiumTypes = () => {
     >
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-30"
+        className="absolute inset-0 bg-cover bg-center opacity-50"
         style={{ backgroundImage: `url(${futuristicChartBg})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/70" />
 
       <div className="container mx-auto relative z-10" ref={ref}>
         {/* Section Header */}
