@@ -33,9 +33,9 @@ export const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/95 backdrop-blur-xl border-b border-border/50"
+          ? "bg-background/70 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-primary/5"
           : "bg-transparent"
       }`}
     >
@@ -50,7 +50,7 @@ export const Navbar = () => {
             <img 
               src={logoZafir} 
               alt="Zafir Invest" 
-              className="h-8 md:h-10 w-auto brightness-0 invert"
+              className="h-8 md:h-10 w-auto"
             />
           </motion.a>
 

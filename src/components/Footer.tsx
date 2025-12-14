@@ -47,7 +47,7 @@ export const Footer = () => {
               <img 
                 src={logoZafir} 
                 alt="Zafir Invest" 
-                className="h-10 w-auto brightness-0 invert"
+                className="h-10 w-auto"
               />
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
