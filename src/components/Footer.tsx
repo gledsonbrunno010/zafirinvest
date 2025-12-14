@@ -24,10 +24,10 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Youtube, href: "#", label: "YouTube" },
+  { icon: Instagram, href: "#", label: "Instagram", color: "bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F77737]" },
+  { icon: Facebook, href: "#", label: "Facebook", color: "bg-[#1877F2]" },
+  { icon: Linkedin, href: "#", label: "LinkedIn", color: "bg-[#0A66C2]" },
+  { icon: Youtube, href: "#", label: "YouTube", color: "bg-[#FF0000]" },
 ];
 
 const certifications = [
@@ -37,7 +37,10 @@ const certifications = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-card border-t border-border relative">
+      {/* Top gradient for section transition */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-10 -translate-y-full" />
+
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
@@ -55,14 +58,14 @@ export const Footer = () => {
               estratégias inteligentes.
             </p>
 
-            {/* Social Links */}
+            {/* Social Links with Original Colors */}
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
                   whileHover={{ scale: 1.1 }}
-                  className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                  className={`w-10 h-10 rounded-lg ${social.color} flex items-center justify-center text-white transition-all shadow-lg hover:shadow-xl`}
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />
@@ -73,7 +76,7 @@ export const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-display font-bold text-foreground mb-4">
+            <h4 className="font-display font-bold text-primary mb-4">
               Empresa
             </h4>
             <ul className="space-y-3">
@@ -92,7 +95,7 @@ export const Footer = () => {
 
           {/* Services Links */}
           <div>
-            <h4 className="font-display font-bold text-foreground mb-4">
+            <h4 className="font-display font-bold text-primary mb-4">
               Serviços
             </h4>
             <ul className="space-y-3">
@@ -111,7 +114,7 @@ export const Footer = () => {
 
           {/* Legal Links */}
           <div>
-            <h4 className="font-display font-bold text-foreground mb-4">
+            <h4 className="font-display font-bold text-primary mb-4">
               Legal
             </h4>
             <ul className="space-y-3">
@@ -130,7 +133,7 @@ export const Footer = () => {
 
           {/* Certifications */}
           <div>
-            <h4 className="font-display font-bold text-foreground mb-4">
+            <h4 className="font-display font-bold text-primary mb-4">
               Certificações
             </h4>
             <div className="flex flex-wrap gap-3">

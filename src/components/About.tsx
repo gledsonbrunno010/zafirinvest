@@ -40,13 +40,18 @@ export const About = () => {
 
   return (
     <section id="sobre" className="section-padding relative overflow-hidden">
+      {/* Top gradient for section transition */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-20" />
+      {/* Bottom gradient for section transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-20" />
+      
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-60"
         style={{ backgroundImage: `url(${aboutOfficeBg})` }}
       />
       {/* Left gradient for readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/60 to-background/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/50 to-background/20" />
 
       <div className="container mx-auto relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">

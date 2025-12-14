@@ -51,12 +51,17 @@ export const ConsortiumTypes = () => {
       id="consorcios" 
       className="section-padding relative overflow-hidden"
     >
+      {/* Top gradient for section transition */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-20" />
+      {/* Bottom gradient for section transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-20" />
+      
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-50"
         style={{ backgroundImage: `url(${futuristicChartBg})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/60" />
 
       <div className="container mx-auto relative z-10" ref={ref}>
         {/* Section Header */}
