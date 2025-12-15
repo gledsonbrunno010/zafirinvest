@@ -47,10 +47,10 @@ export const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
             <a href="#inicio" className="inline-block mb-4">
-              <img 
-                src={logoZafir} 
-                alt="Zafir Invest" 
-                className="h-10 w-auto"
+              <img
+                src={logoZafir}
+                alt="Zafir Invest"
+                className="h-10 md:h-32 w-auto"
               />
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
@@ -75,7 +75,7 @@ export const Footer = () => {
           </div>
 
           {/* Company Links */}
-          <div>
+          <div className="lg:pt-36">
             <h4 className="font-display font-bold text-primary mb-4">
               Empresa
             </h4>
@@ -94,7 +94,7 @@ export const Footer = () => {
           </div>
 
           {/* Services Links */}
-          <div>
+          <div className="lg:pt-36">
             <h4 className="font-display font-bold text-primary mb-4">
               Serviços
             </h4>
@@ -113,7 +113,7 @@ export const Footer = () => {
           </div>
 
           {/* Legal Links */}
-          <div>
+          <div className="lg:pt-36">
             <h4 className="font-display font-bold text-primary mb-4">
               Legal
             </h4>
@@ -132,7 +132,7 @@ export const Footer = () => {
           </div>
 
           {/* Certifications */}
-          <div>
+          <div className="lg:pt-36">
             <h4 className="font-display font-bold text-primary mb-4">
               Certificações
             </h4>
@@ -142,9 +142,9 @@ export const Footer = () => {
                   key={cert.name}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 border border-border/30"
                 >
-                  <img 
-                    src={cert.image} 
-                    alt={cert.name} 
+                  <img
+                    src={cert.image}
+                    alt={cert.name}
                     className="h-6 w-auto object-contain grayscale opacity-70"
                   />
                 </div>

@@ -43,19 +43,22 @@ export const HeroSlider = () => {
           className="absolute inset-0"
         >
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center md:bg-[85%_center]"
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
           />
-          {/* Strong gradient around all edges - vignette effect */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background))_100%)]" />
-          {/* Top fade */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-transparent" style={{ height: '40%' }} />
-          {/* Bottom fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-          {/* Left fade */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" style={{ width: '40%' }} />
-          {/* Right fade */}
-          <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent" style={{ width: '40%', marginLeft: 'auto' }} />
+          {/* Strong gradient around all edges - vignette effect (reduced opacity on desktop, no vignette) */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,hsl(var(--background))_100%)] md:hidden" />
+
+          {/* Top fade - REMOVED as requested */}
+
+          {/* Bottom fade - Reduced minimal visibility on desktop */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-50" />
+
+          {/* Left fade - Strong linear gradient for text readability (only gradient requested) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 via-40% to-transparent md:w-[65%] w-[40%]" />
+
+          {/* Right fade - Removed on desktop */}
+          <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent md:hidden" style={{ width: '40%', marginLeft: 'auto' }} />
         </motion.div>
       </AnimatePresence>
 
@@ -124,8 +127,8 @@ export const HeroSlider = () => {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide
-                  ? "w-8 bg-primary"
-                  : "w-2 bg-foreground/30 hover:bg-foreground/50"
+                ? "w-8 bg-primary"
+                : "w-2 bg-foreground/30 hover:bg-foreground/50"
                 }`}
             />
           ))}

@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Home, Car, Truck, Cog, ArrowRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { Home, Car, Truck, Cog, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroHouse from "@/assets/hero-house.jpg";
 import heroVehicles from "@/assets/hero-vehicles.jpg";
@@ -45,6 +45,7 @@ const whatsappUrl = "https://wa.me/5561994583188?text=Olá.%20Gostaria%20de%20ag
 export const ConsortiumTypes = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedType, setSelectedType] = useState<typeof consortiumTypes[0] | null>(null);
 
   return (
     <section
@@ -88,17 +89,20 @@ export const ConsortiumTypes = () => {
           {consortiumTypes.map((type, index) => (
             <motion.div
               key={type.title}
+              layoutId={`card-${type.title}`}
+              onClick={() => setSelectedType(type)}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="group relative"
+              className="group relative cursor-pointer"
             >
               {/* Yellow Blur Effect */}
               <div className="absolute -inset-1 bg-primary/30 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity" />
 
               <div className="relative overflow-hidden rounded-2xl aspect-[4/3] md:aspect-[16/10]">
                 {/* Background Image */}
-                <div
+                <motion.div
+                  layoutId={`image-${type.title}`}
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                   style={{ backgroundImage: `url(${type.image})` }}
                 />
@@ -150,6 +154,61 @@ export const ConsortiumTypes = () => {
           </Button>
         </motion.div>
       </div>
+
+      {/* Lightbox Overlay */}
+      <AnimatePresence>
+        {selectedType && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedType(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-lg"
+          >
+            <motion.div
+              layoutId={`card-${selectedType.title}`}
+              className="relative w-full max-w-4xl bg-card rounded-3xl overflow-hidden shadow-2xl border border-primary/20"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedType(null)}
+                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <div className="aspect-video w-full relative">
+                <motion.div
+                  layoutId={`image-${selectedType.title}`}
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${selectedType.image})` }}
+                />
+              </div>
+
+              <div className="p-8 bg-card border-t border-border">
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <selectedType.icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-display font-bold text-foreground mb-2">
+                      {selectedType.title}
+                    </h3>
+                    <p className="text-lg text-muted-foreground mb-4">
+                      {selectedType.description}
+                    </p>
+                    <div className="inline-block px-4 py-2 bg-primary/10 rounded-lg">
+                      <p className="text-xl font-bold text-primary">
+                        {selectedType.credit}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

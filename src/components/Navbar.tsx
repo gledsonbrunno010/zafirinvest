@@ -33,11 +33,10 @@ export const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/70 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-primary/5"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        ? "bg-background/70 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-primary/5"
+        : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -47,10 +46,10 @@ export const Navbar = () => {
             className="flex items-center gap-2"
             whileHover={{ scale: 1.02 }}
           >
-            <img 
-              src={logoZafir} 
-              alt="Zafir Invest" 
-              className="h-8 md:h-10 w-auto"
+            <img
+              src={logoZafir}
+              alt="Zafir Invest"
+              className="h-10 md:h-20 w-auto"
             />
           </motion.a>
 
@@ -60,13 +59,13 @@ export const Navbar = () => {
               <motion.a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+                className="text-sm font-medium text-white/90 hover:text-white transition-colors relative group"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full" />
               </motion.a>
             ))}
           </div>
@@ -76,7 +75,7 @@ export const Navbar = () => {
             <Button
               asChild
               variant="default"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
             >
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                 <Phone className="w-4 h-4 mr-2" />
