@@ -47,17 +47,17 @@ export const ConsortiumTypes = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section 
-      id="consorcios" 
+    <section
+      id="consorcios"
       className="section-padding relative overflow-hidden"
     >
       {/* Top gradient for section transition */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-20" />
       {/* Bottom gradient for section transition */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-20" />
-      
+
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center opacity-50"
         style={{ backgroundImage: `url(${futuristicChartBg})` }}
       />
@@ -72,11 +72,11 @@ export const ConsortiumTypes = () => {
           className="text-center mb-12 md:mb-16"
         >
           <span className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium mb-4">
-            Tipos de Consórcio
+            Tipos de Crédito
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
-            Escolha o consórcio{" "}
-            <span className="text-gradient-gold">ideal para você</span>
+            Escolha o Investimento{" "}
+            <span className="text-gradient-gold">ideal para você hoje</span>
           </h2>
           <p className="text-lg text-muted-foreground mt-4">
             Invista hoje mesmo no seu futuro
@@ -95,7 +95,7 @@ export const ConsortiumTypes = () => {
             >
               {/* Yellow Blur Effect */}
               <div className="absolute -inset-1 bg-primary/30 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity" />
-              
+
               <div className="relative overflow-hidden rounded-2xl aspect-[4/3] md:aspect-[16/10]">
                 {/* Background Image */}
                 <div

@@ -7,34 +7,34 @@ import officeNegotiation from "@/assets/office-negotiation.jpg";
 
 const comparisonData = [
   {
-    feature: "Juros compostos",
-    consortium: { value: false, text: "Não possui" },
-    financing: { value: true, text: "Sim, taxas elevadas" },
+    feature: "Entrada inicial",
+    consortium: { value: false, text: "Não é obrigatória. Pode ser substituída ou antecipada via estratégia de lance." },
+    financing: { value: true, text: "Normalmente obrigatória, variando entre 20% e 30% do valor do imóvel." },
   },
   {
-    feature: "Taxa de administração",
-    consortium: { value: true, text: "Apenas taxa fixa" },
-    financing: { value: true, text: "Juros + IOF + taxas" },
+    feature: "Juros",
+    consortium: { value: false, text: "Não possui juros." },
+    financing: { value: true, text: "Possui juros compostos, geralmente entre 8% e 12% ao ano." },
   },
   {
-    feature: "Poder de compra à vista",
-    consortium: { value: true, text: "Sim, negociação livre" },
-    financing: { value: false, text: "Compra a prazo" },
+    feature: "Custo financeiro total",
+    consortium: { value: true, text: "Menor no longo prazo, pois não há incidência de juros." },
+    financing: { value: false, text: "Maior, devido à capitalização dos juros ao longo do contrato." },
   },
   {
-    feature: "Planejamento financeiro",
-    consortium: { value: true, text: "Parcelas previsíveis" },
-    financing: { value: false, text: "Parcelas variáveis" },
+    feature: "Correção das parcelas",
+    consortium: { value: true, text: "Correção conforme índice do grupo (INCC, IPCA ou similar)." },
+    financing: { value: true, text: "Correção por TR, IPCA ou taxa fixa prevista em contrato." },
   },
   {
-    feature: "Custo total final",
-    consortium: { value: true, text: "Até 30% menor" },
-    financing: { value: false, text: "Pode dobrar o valor" },
+    feature: "Exigência de renda",
+    consortium: { value: true, text: "Mais flexível, com análise menos rígida." },
+    financing: { value: false, text: "Mais rigorosa, com exigência formal de comprovação de renda." },
   },
   {
-    feature: "Contemplação antecipada",
-    consortium: { value: true, text: "Lance ou sorteio" },
-    financing: { value: true, text: "Imediata (mais caro)" },
+    feature: "Risco financeiro",
+    consortium: { value: true, text: "Baixo, pois não há juros e o valor cresce de forma controlada." },
+    financing: { value: false, text: "Médio a alto, em razão dos juros, correções e inadimplência." },
   },
 ];
 
@@ -50,9 +50,9 @@ export const Comparison = () => {
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-20" />
       {/* Bottom gradient for section transition */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-20" />
-      
+
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center opacity-60"
         style={{ backgroundImage: `url(${officeNegotiation})` }}
       />
@@ -90,17 +90,17 @@ export const Comparison = () => {
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div className="p-4 text-center">
               <span className="text-muted-foreground text-sm font-medium">
-                Característica
+                Ponto mais discutido
               </span>
             </div>
             {/* Highlighted Consortium Column */}
             <div className="p-4 bg-primary/20 rounded-t-xl text-center border-2 border-primary/40 border-b-0 shadow-lg shadow-primary/20">
-              <span className="text-primary font-bold text-lg">Consórcio</span>
+              <span className="text-primary font-bold text-lg">Crédito Inteligente</span>
             </div>
             {/* Highlighted Financing Column */}
             <div className="p-4 bg-secondary/70 rounded-t-xl text-center border border-border/50 border-b-0">
               <span className="text-muted-foreground font-medium text-lg">
-                Financiamento
+                Financiamento Imobiliário
               </span>
             </div>
           </div>

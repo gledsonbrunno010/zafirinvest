@@ -74,7 +74,7 @@ export const HeroSlider = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Consórcio Inteligente
+              Crédito Inteligente
             </motion.span>
 
             {/* Main Headline - Static */}
@@ -86,8 +86,8 @@ export const HeroSlider = () => {
 
             {/* Subheadline - Static */}
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8">
-              Invista em imóveis, veículos e equipamentos por consórcio com
-              estratégia, segurança e planejamento inteligente.
+              Invista em imóveis, veículos e equipamentos através do crédito inteligente com
+              estratégia, segurança e planejamento.
             </p>
 
             {/* CTAs - Static */}
@@ -123,11 +123,10 @@ export const HeroSlider = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide
+              className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide
                   ? "w-8 bg-primary"
                   : "w-2 bg-foreground/30 hover:bg-foreground/50"
-              }`}
+                }`}
             />
           ))}
         </div>
