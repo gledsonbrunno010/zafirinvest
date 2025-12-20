@@ -89,8 +89,8 @@ export const HeroSlider = () => {
 
             {/* Subheadline - Static */}
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8">
-              Invista em imóveis, veículos e equipamentos através do crédito inteligente com
-              estratégia, segurança e planejamento.
+              Invista em imóveis, veículos leves e pesados com segurança, estratégia e o crédito certo
+
             </p>
 
             {/* CTAs - Static */}

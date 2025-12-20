@@ -160,7 +160,7 @@ export const Testimonials = () => {
               key={`${testimonial.name}-${index}`}
               className="flex-shrink-0 w-80 md:w-96"
             >
-              <div className="glass-card p-6 h-full">
+              <div className="glass-card spotlight-card p-6 h-full">
                 {/* Rating */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -179,8 +179,8 @@ export const Testimonials = () => {
                 {/* Author with Photo */}
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
-                      src={testimonial.image} 
+                    <img
+                      src={testimonial.image}
                       alt={testimonial.name}
                       className="w-full h-full object-cover"
                     />

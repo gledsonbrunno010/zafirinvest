@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Percent, Calendar, Wallet, TrendingUp } from "lucide-react";
+import Particles from "@/components/ui/Particles";
 
 const benefits = [
   {
@@ -37,6 +38,18 @@ export const WhyConsortium = () => {
       {/* Bottom gradient for section transition */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10" />
 
+      <Particles
+        className="absolute inset-0"
+        particleColors={['#FFD700', '#FFD700']}
+        particleCount={200}
+        particleSpread={10}
+        speed={0.1}
+        particleBaseSize={100}
+        moveParticlesOnHover={true}
+        alphaParticles={false}
+        disableRotation={false}
+      />
+
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
@@ -68,7 +81,7 @@ export const WhyConsortium = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="glass-card p-6 md:p-8 h-full hover:bg-card/70 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <div className="glass-card spotlight-card p-6 md:p-8 h-full hover:bg-card/70 transition-all duration-300 hover:scale-105 hover:shadow-lg">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                   <benefit.icon className="w-7 h-7 text-primary" />
                 </div>

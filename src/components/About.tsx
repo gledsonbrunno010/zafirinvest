@@ -44,9 +44,9 @@ export const About = () => {
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-20" />
       {/* Bottom gradient for section transition */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-20" />
-      
+
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center opacity-60"
         style={{ backgroundImage: `url(${aboutOfficeBg})` }}
       />
@@ -120,8 +120,8 @@ export const About = () => {
               >
                 {/* Yellow Blur Effect */}
                 <div className="absolute -inset-1 bg-primary/25 rounded-2xl blur-lg opacity-50 group-hover:opacity-70 transition-opacity" />
-                
-                <div className="relative glass-card p-6 hover:bg-card/70 transition-all">
+
+                <div className="relative glass-card spotlight-card p-6 hover:bg-card/70 transition-all">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <value.icon className="w-6 h-6 text-primary" />
                   </div>

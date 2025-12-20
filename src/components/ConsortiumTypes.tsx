@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Home, Car, Truck, Cog, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Particles from "@/components/ui/Particles";
 import heroHouse from "@/assets/hero-house.jpg";
 import heroVehicles from "@/assets/hero-vehicles.jpg";
 import heroTruck from "@/assets/hero-truck.jpg";
@@ -58,11 +59,20 @@ export const ConsortiumTypes = () => {
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-20" />
 
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-50"
-        style={{ backgroundImage: `url(${futuristicChartBg})` }}
-      />
+
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/60" />
+
+      <Particles
+        className="absolute inset-0"
+        particleColors={['#FFD700', '#FFD700']}
+        particleCount={200}
+        particleSpread={10}
+        speed={0.1}
+        particleBaseSize={100}
+        moveParticlesOnHover={true}
+        alphaParticles={false}
+        disableRotation={false}
+      />
 
       <div className="container mx-auto relative z-10" ref={ref}>
         {/* Section Header */}
@@ -94,7 +104,7 @@ export const ConsortiumTypes = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="group relative cursor-pointer"
+              className="group relative cursor-pointer spotlight-card rounded-2xl"
             >
               {/* Yellow Blur Effect */}
               <div className="absolute -inset-1 bg-primary/30 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity" />

@@ -4,46 +4,47 @@ import { useRef, useState } from "react";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
+import Particles from "@/components/ui/Particles";
 
 const investmentData = [
-  { 
-    months: 12, 
-    label: "12 meses", 
-    finalValue: 540000, 
-    gain: 40000, 
+  {
+    months: 12,
+    label: "12 meses",
+    finalValue: 540000,
+    gain: 40000,
     appreciation: 8,
     chartData: [
       { name: "Investimento", value: 500000, color: "hsl(var(--muted))" },
       { name: "Ganho", value: 40000, color: "hsl(var(--primary))" },
     ]
   },
-  { 
-    months: 24, 
-    label: "24 meses", 
-    finalValue: 583200, 
-    gain: 83200, 
+  {
+    months: 24,
+    label: "24 meses",
+    finalValue: 583200,
+    gain: 83200,
     appreciation: 16.6,
     chartData: [
       { name: "Investimento", value: 500000, color: "hsl(var(--muted))" },
       { name: "Ganho", value: 83200, color: "hsl(var(--primary))" },
     ]
   },
-  { 
-    months: 48, 
-    label: "48 meses", 
-    finalValue: 680000, 
-    gain: 180000, 
+  {
+    months: 48,
+    label: "48 meses",
+    finalValue: 680000,
+    gain: 180000,
     appreciation: 36,
     chartData: [
       { name: "Investimento", value: 500000, color: "hsl(var(--muted))" },
       { name: "Ganho", value: 180000, color: "hsl(var(--primary))" },
     ]
   },
-  { 
-    months: 120, 
-    label: "120 meses", 
-    finalValue: 1079000, 
-    gain: 579000, 
+  {
+    months: 120,
+    label: "120 meses",
+    finalValue: 1079000,
+    gain: 579000,
     appreciation: 115,
     chartData: [
       { name: "Investimento", value: 500000, color: "hsl(var(--muted))" },
@@ -68,7 +69,19 @@ export const Simulation = () => {
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-10" />
       {/* Bottom gradient for section transition */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10" />
-      
+
+      <Particles
+        className="absolute inset-0"
+        particleColors={['#FFD700', '#FFD700']}
+        particleCount={200}
+        particleSpread={10}
+        speed={0.1}
+        particleBaseSize={100}
+        moveParticlesOnHover={true}
+        alphaParticles={false}
+        disableRotation={false}
+      />
+
       {/* Decorative elements */}
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
 
@@ -98,7 +111,7 @@ export const Simulation = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-4xl mx-auto glass-card p-6 md:p-10"
+          className="max-w-4xl mx-auto glass-card spotlight-card p-6 md:p-10"
         >
           {/* Period Selector */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
@@ -106,19 +119,17 @@ export const Simulation = () => {
               <button
                 key={period.months}
                 onClick={() => setSelectedPeriod(index)}
-                className={`p-4 rounded-xl text-center transition-all ${
-                  selectedPeriod === index
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "bg-secondary/50 text-foreground hover:bg-secondary"
-                }`}
+                className={`p-4 rounded-xl text-center transition-all ${selectedPeriod === index
+                  ? "bg-primary text-primary-foreground shadow-lg"
+                  : "bg-secondary/50 text-foreground hover:bg-secondary"
+                  }`}
               >
                 <span className="block text-lg font-bold">{period.label}</span>
                 <span
-                  className={`text-sm ${
-                    selectedPeriod === index
-                      ? "text-primary-foreground/80"
-                      : "text-muted-foreground"
-                  }`}
+                  className={`text-sm ${selectedPeriod === index
+                    ? "text-primary-foreground/80"
+                    : "text-muted-foreground"
+                    }`}
                 >
                   +{period.appreciation}% valorização
                 </span>
@@ -146,7 +157,7 @@ export const Simulation = () => {
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip 
+                  <Tooltip
                     formatter={(value: number) => `R$ ${value.toLocaleString("pt-BR")}`}
                     contentStyle={{
                       backgroundColor: "hsl(var(--card))",
@@ -154,7 +165,7 @@ export const Simulation = () => {
                       borderRadius: "8px",
                     }}
                   />
-                  <Legend 
+                  <Legend
                     formatter={(value) => <span className="text-foreground">{value}</span>}
                   />
                 </PieChart>

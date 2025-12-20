@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Início", href: "#inicio" },
   { label: "Consórcios", href: "#consorcios" },
   { label: "Simulação", href: "#simulacao" },
-  { label: "Comparativo", href: "#comparativo" },
+
   { label: "Avaliações", href: "#avaliacoes" },
   { label: "Sobre", href: "#sobre" },
   { label: "Contato", href: "#contato" },

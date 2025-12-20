@@ -3,7 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { HeroSlider } from "@/components/HeroSlider";
 import { WhyConsortium } from "@/components/WhyConsortium";
 import { ConsortiumTypes } from "@/components/ConsortiumTypes";
-import { Comparison } from "@/components/Comparison";
+import { SpotlightEffect } from "@/components/ui/SpotlightEffect";
 import { Simulation } from "@/components/Simulation";
 import { Testimonials } from "@/components/Testimonials";
 import { About } from "@/components/About";
@@ -60,7 +60,7 @@ const Index = () => {
         <HeroSlider />
         <WhyConsortium />
         <ConsortiumTypes />
-        <Comparison />
+        <SpotlightEffect />
         <Simulation />
         <Testimonials />
         <About />
