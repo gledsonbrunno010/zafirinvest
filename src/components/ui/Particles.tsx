@@ -128,7 +128,7 @@ const Particles = ({
         // Detect mobile to reduce improved performance
         const isMobile = window.innerWidth < 768;
         const effectiveParticleCount = isMobile ? Math.min(particleCount, 50) : particleCount;
-        const effectivePixelRatio = Math.min(window.devicePixelRatio, 1.5); // Cap DPR at 1.5 for performance
+        const effectivePixelRatio = isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5); // Cap DPR at 1 on mobile for performance
 
         const renderer = new Renderer({
             dpr: effectivePixelRatio,

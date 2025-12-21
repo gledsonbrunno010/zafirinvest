@@ -1,16 +1,22 @@
+import { Suspense, lazy } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { HeroSlider } from "@/components/HeroSlider";
-import { WhyConsortium } from "@/components/WhyConsortium";
-import { ConsortiumTypes } from "@/components/ConsortiumTypes";
-import { SpotlightEffect } from "@/components/ui/SpotlightEffect";
-import { Simulation } from "@/components/Simulation";
-import { Testimonials } from "@/components/Testimonials";
-import { About } from "@/components/About";
-import { Partners } from "@/components/Partners";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
-import { FloatingCTA } from "@/components/FloatingCTA";
+
+// Lazy load below-the-fold components
+const WhyConsortium = lazy(() => import("@/components/WhyConsortium").then(module => ({ default: module.WhyConsortium })));
+const ConsortiumTypes = lazy(() => import("@/components/ConsortiumTypes").then(module => ({ default: module.ConsortiumTypes })));
+const SpotlightEffect = lazy(() => import("@/components/ui/SpotlightEffect").then(module => ({ default: module.SpotlightEffect })));
+const Simulation = lazy(() => import("@/components/Simulation").then(module => ({ default: module.Simulation })));
+const Testimonials = lazy(() => import("@/components/Testimonials").then(module => ({ default: module.Testimonials })));
+const About = lazy(() => import("@/components/About").then(module => ({ default: module.About })));
+const Partners = lazy(() => import("@/components/Partners").then(module => ({ default: module.Partners })));
+const Contact = lazy(() => import("@/components/Contact").then(module => ({ default: module.Contact })));
+const Footer = lazy(() => import("@/components/Footer").then(module => ({ default: module.Footer })));
+const FloatingCTA = lazy(() => import("@/components/FloatingCTA").then(module => ({ default: module.FloatingCTA })));
+
+// Loading fallback component
+const SectionLoader = () => <div className="w-full h-40 flex items-center justify-center bg-background/50" />;
 
 const Index = () => {
   return (
@@ -58,16 +64,46 @@ const Index = () => {
       <main className="min-h-screen bg-background">
         <Navbar />
         <HeroSlider />
-        <WhyConsortium />
-        <ConsortiumTypes />
-        <SpotlightEffect />
-        <Simulation />
-        <Testimonials />
-        <About />
-        <Partners />
-        <Contact />
-        <Footer />
-        <FloatingCTA />
+
+        <Suspense fallback={<SectionLoader />}>
+          <WhyConsortium />
+        </Suspense>
+
+        <Suspense fallback={<SectionLoader />}>
+          <ConsortiumTypes />
+        </Suspense>
+
+        <Suspense fallback={null}>
+          <SpotlightEffect />
+        </Suspense>
+
+        <Suspense fallback={<SectionLoader />}>
+          <Simulation />
+        </Suspense>
+
+        <Suspense fallback={<SectionLoader />}>
+          <Testimonials />
+        </Suspense>
+
+        <Suspense fallback={<SectionLoader />}>
+          <About />
+        </Suspense>
+
+        <Suspense fallback={<SectionLoader />}>
+          <Partners />
+        </Suspense>
+
+        <Suspense fallback={<SectionLoader />}>
+          <Contact />
+        </Suspense>
+
+        <Suspense fallback={<SectionLoader />}>
+          <Footer />
+        </Suspense>
+
+        <Suspense fallback={null}>
+          <FloatingCTA />
+        </Suspense>
       </main>
     </>
   );
