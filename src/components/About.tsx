@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Shield, Target, TrendingUp, Users, CheckCircle } from "lucide-react";
-import aboutOfficeBg from "@/assets/about-office-bg.jpg";
+import Particles from "@/components/ui/Particles";
+
 
 const values = [
   {
@@ -45,13 +46,21 @@ export const About = () => {
       {/* Bottom gradient for section transition */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-20" />
 
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-60"
-        style={{ backgroundImage: `url(${aboutOfficeBg})` }}
-      />
+
       {/* Left gradient for readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/50 to-background/20" />
+
+      <Particles
+        className="absolute inset-0"
+        particleColors={['#FFD700', '#FFD700']}
+        particleCount={200}
+        particleSpread={10}
+        speed={0.1}
+        particleBaseSize={100}
+        moveParticlesOnHover={true}
+        alphaParticles={false}
+        disableRotation={false}
+      />
 
       <div className="container mx-auto relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">

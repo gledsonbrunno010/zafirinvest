@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Star } from "lucide-react";
+import Particles from "@/components/ui/Particles";
 
 // Import testimonial images
 import carlosSilva from "@/assets/testimonials/carlos-silva.jpg";
@@ -111,6 +112,18 @@ export const Testimonials = () => {
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-10" />
       {/* Bottom gradient for section transition */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10" />
+
+      <Particles
+        className="absolute inset-0"
+        particleColors={['#FFD700', '#FFD700']}
+        particleCount={200}
+        particleSpread={10}
+        speed={0.1}
+        particleBaseSize={100}
+        moveParticlesOnHover={true}
+        alphaParticles={false}
+        disableRotation={false}
+      />
 
       <div className="container mx-auto" ref={ref}>
         {/* Section Header */}

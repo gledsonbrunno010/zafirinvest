@@ -1,28 +1,27 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import bacenLogo from "@/assets/bacen-logo.jpg";
-import lgpdLogo from "@/assets/lgpd-logo.png";
-
-const partners = [
-  {
-    name: "Âncora Consórcios",
-    logo: "ÂNCORA",
-  },
-  {
-    name: "Eutbem Administradora",
-    logo: "EUTBEM",
-  },
-];
+import bacenLogo from "@/assets/logo-bacen-hq.png";
+import abacLogo from "@/assets/logo-abac-original.png";
+import lgpdLogo from "@/assets/logo-lgpd-original.png";
 
 const certifications = [
   {
     name: "Banco Central do Brasil",
     image: bacenLogo,
+    className: "filter invert mix-blend-screen opacity-90 hover:opacity-100",
+  },
+  {
+    name: "ABAC",
+    image: abacLogo,
+    className: "filter invert grayscale brightness-150 contrast-125 mix-blend-screen opacity-90 hover:opacity-100",
   },
   {
     name: "LGPD",
     image: lgpdLogo,
+    // Removed 'invert' to treat the original black background as transparency (via screen blend)
+    // Increased contrast to ensure dark grey artifacts become pure black (transparent)
+    className: "filter grayscale brightness-150 contrast-150 mix-blend-screen opacity-90 hover:opacity-100",
   },
 ];
 
@@ -31,72 +30,44 @@ export const Partners = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-12 md:py-16 bg-background border-y border-border/30 relative">
-      {/* Top gradient for section transition */}
-      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-background to-transparent z-10" />
-      {/* Bottom gradient for section transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent z-10" />
-      <div className="container mx-auto px-4" ref={ref}>
+    <section className="py-16 bg-black relative overflow-hidden">
+      {/* Yellow Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black to-primary/20 pointer-events-none" />
+
+      {/* Content */}
+      <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          className="flex flex-col items-center justify-center text-center space-y-12"
         >
-          <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
-            Parceiros Oficiais
-          </span>
+          {/* Section Title */}
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-gradient-gold max-w-4xl mx-auto leading-tight">
+            Certificado e Fiscalizado pelos Principais Órgãos Regulamentadores
+          </h2>
+
+          {/* Logos */}
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20">
+            {certifications.map((cert, index) => (
+              <motion.div
+                key={cert.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className="group relative"
+              >
+                <div className="relative w-40 h-40 md:w-56 md:h-56 flex items-center justify-center transition-all duration-300 hover:scale-105">
+                  <img
+                    src={cert.image}
+                    alt={cert.name}
+                    className={`w-full h-full object-contain transition-all duration-300 ${cert.className}`}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
-
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mb-12">
-          {partners.map((partner, index) => (
-            <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="px-8 py-4 rounded-xl bg-secondary/30 border border-border/30 hover:border-primary/30 transition-all">
-                <span className="text-2xl md:text-3xl font-display font-bold text-muted-foreground group-hover:text-foreground transition-colors">
-                  {partner.logo}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mb-6"
-        >
-          <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
-            Certificações e Compliance
-          </span>
-        </motion.div>
-
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-          {certifications.map((cert, index) => (
-            <motion.div
-              key={cert.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-              className="group"
-            >
-              <div className="px-6 py-4 rounded-xl bg-secondary/20 border border-border/20 hover:border-primary/30 transition-all">
-                <img 
-                  src={cert.image} 
-                  alt={cert.name}
-                  className="h-12 md:h-16 w-auto object-contain grayscale opacity-70 group-hover:opacity-100 transition-opacity"
-                />
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
