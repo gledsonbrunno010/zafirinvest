@@ -43,7 +43,7 @@ export const HeroSlider = () => {
           className="absolute inset-0"
         >
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center md:scale-110"
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
           />
           {/* Mobile Overlay - Lighter gradient from bottom for text readability, keeping image visible */}
@@ -73,7 +73,7 @@ export const HeroSlider = () => {
             </motion.span>
 
             {/* Main Headline - Static */}
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-sans font-extrabold text-foreground leading-[1.1] mb-6 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-sans font-extrabold text-foreground leading-[1.1] mb-6 tracking-tight">
               Transforme seu dinheiro em{" "}
               <span className="text-gradient-gold">patrimônio sólido</span>,
               sem juros abusivos.
