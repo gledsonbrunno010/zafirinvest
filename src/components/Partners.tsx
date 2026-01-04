@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import bacenLogo from "@/assets/logo-bacen-hq.png";
 import abacLogo from "@/assets/logo-abac-original.png";
-import lgpdLogo from "@/assets/logo-lgpd-original.png";
+import lgpdLogo from "@/assets/logo-lgpd-metallic-final.png";
 
 const certifications = [
   {
@@ -19,9 +19,7 @@ const certifications = [
   {
     name: "LGPD",
     image: lgpdLogo,
-    // Removed 'invert' to treat the original black background as transparency (via screen blend)
-    // Increased contrast to ensure dark grey artifacts become pure black (transparent)
-    className: "filter grayscale brightness-150 contrast-150 mix-blend-screen opacity-90 hover:opacity-100",
+    className: "opacity-90 hover:opacity-100",
   },
 ];
 
