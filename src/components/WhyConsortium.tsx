@@ -41,7 +41,7 @@ export const WhyConsortium = () => {
       <Particles
         className="absolute inset-0"
         particleColors={['#FFD700', '#FFD700']}
-        particleCount={200}
+        particleCount={60}
         particleSpread={10}
         speed={0.1}
         particleBaseSize={100}
@@ -54,7 +54,7 @@ export const WhyConsortium = () => {
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
 
-      <div className="container mx-auto relative" ref={ref}>
+      <div className="container mx-auto relative px-4" ref={ref}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -81,8 +81,8 @@ export const WhyConsortium = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="glass-card spotlight-card p-6 md:p-8 h-full hover:bg-card/70 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+              <div className="glass-card spotlight-card p-6 md:p-8 h-full bg-card/70 transition-all duration-300 md:scale-105 shadow-lg">
+                <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mb-6 transition-colors">
                   <benefit.icon className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="text-xl font-display font-bold text-foreground mb-3">

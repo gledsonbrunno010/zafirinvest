@@ -65,7 +65,7 @@ export const ConsortiumTypes = () => {
       <Particles
         className="absolute inset-0"
         particleColors={['#FFD700', '#FFD700']}
-        particleCount={200}
+        particleCount={60}
         particleSpread={10}
         speed={0.1}
         particleBaseSize={100}
@@ -74,7 +74,7 @@ export const ConsortiumTypes = () => {
         disableRotation={false}
       />
 
-      <div className="container mx-auto relative z-10" ref={ref}>
+      <div className="container mx-auto relative z-10 px-4" ref={ref}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

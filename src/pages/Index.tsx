@@ -66,11 +66,11 @@ const Index = () => {
         <HeroSlider />
 
         <Suspense fallback={<SectionLoader />}>
-          <WhyConsortium />
+          <ConsortiumTypes />
         </Suspense>
 
         <Suspense fallback={<SectionLoader />}>
-          <ConsortiumTypes />
+          <WhyConsortium />
         </Suspense>
 
         <Suspense fallback={null}>
