@@ -19,7 +19,7 @@ const certifications = [
   {
     name: "LGPD",
     image: lgpdLogo,
-    className: "opacity-90 hover:opacity-100",
+    className: "filter brightness-150 contrast-125 drop-shadow-[0_0_15px_rgba(192,192,192,0.8)] opacity-95 hover:opacity-100 hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]",
   },
 ];
 
