@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoZafir from "@/assets/logo-zafir-final.png";
+import logoZafir from "@/assets/logo-zafir-final.svg";
 
 const navLinks = [
   { label: "Início", href: "#inicio" },
