@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import bacenLogo from "@/assets/logo-bacen-hq.png";
 import abacLogo from "@/assets/logo-abac-original.png";
-import lgpdLogo from "@/assets/logo-lgpd-final.png";
+import lgpdLogo from "@/assets/logo-lgpd-final.svg";
 
 const certifications = [
   {
@@ -19,7 +19,7 @@ const certifications = [
   {
     name: "LGPD",
     image: lgpdLogo,
-    className: "filter brightness-125 contrast-110 mix-blend-screen opacity-90 hover:opacity-100",
+    className: "opacity-90 hover:opacity-100",
   },
 ];
 
