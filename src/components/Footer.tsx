@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 import logoZafir from "@/assets/logo-zafir-final.svg";
 import bacenLogo from "@/assets/bacen-logo.jpg";
-import lgpdLogo from "@/assets/lgpd-logo.png";
+import lgpdLogo from "@/assets/logo-lgpd-transparent.png";
 
 const footerLinks = {
   company: [
