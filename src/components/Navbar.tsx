@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoZafir from "@/assets/logo-zafir.png";
+import logoZafir from "@/assets/logo-zafir-final.png";
 
 const navLinks = [
   { label: "Início", href: "#inicio" },
@@ -49,7 +49,7 @@ export const Navbar = () => {
             <img
               src={logoZafir}
               alt="Zafir Invest"
-              className="h-10 md:h-20 w-auto"
+              className="h-14 md:h-20 w-auto"
             />
           </motion.a>
 

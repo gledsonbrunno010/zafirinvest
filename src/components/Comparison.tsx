@@ -164,7 +164,7 @@ export const Comparison = () => {
           <Button
             asChild
             size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse hover:animate-none"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-4 md:px-8 md:py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse hover:animate-none w-full sm:w-auto"
           >
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
               Quero pagar menos e investir melhor

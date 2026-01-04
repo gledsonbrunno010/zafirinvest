@@ -31,40 +31,32 @@ export const HeroSlider = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section id="inicio" className="relative h-screen w-full overflow-hidden">
+    <section id="inicio" className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden">
       {/* Background Slides with Fade Edges */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <div
-            className="absolute inset-0 bg-cover bg-center md:bg-[85%_center]"
+            className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
           />
-          {/* Strong gradient around all edges - vignette effect (reduced opacity on desktop, no vignette) */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,hsl(var(--background))_100%)] md:hidden" />
+          {/* Mobile Overlay - Lighter gradient from bottom for text readability, keeping image visible */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/30 to-transparent md:hidden" />
 
-          {/* Top fade - REMOVED as requested */}
-
-          {/* Bottom fade - Reduced minimal visibility on desktop */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-50" />
-
-          {/* Left fade - Strong linear gradient for text readability (only gradient requested) */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 via-40% to-transparent md:w-[65%] w-[40%]" />
-
-          {/* Right fade - Removed on desktop */}
-          <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent md:hidden" style={{ width: '40%', marginLeft: 'auto' }} />
+          {/* Desktop Left Fade - Kept as is for desktop layout */}
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-background via-background/90 via-40% to-transparent w-[65%]" />
         </motion.div>
       </AnimatePresence>
 
       {/* Static Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center container mx-auto px-4">
-        <div className="max-w-3xl">
+      <div className="relative z-10 h-full flex flex-col justify-start pt-20 md:pt-0 md:justify-center items-center md:items-start container mx-auto px-4">
+        <div className="max-w-3xl text-center md:text-left">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,7 +73,7 @@ export const HeroSlider = () => {
             </motion.span>
 
             {/* Main Headline - Static */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-sans font-extrabold text-foreground leading-[1.1] mb-6 tracking-tight">
               Transforme seu dinheiro em{" "}
               <span className="text-gradient-gold">patrimônio sólido</span>,
               sem juros abusivos.
@@ -98,7 +90,7 @@ export const HeroSlider = () => {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse hover:animate-none group"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-base px-6 py-4 md:px-8 md:py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse hover:animate-none group w-full sm:w-auto"
               >
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   Simular Meu Investimento Agora
@@ -109,7 +101,7 @@ export const HeroSlider = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-foreground/30 text-foreground hover:bg-foreground/10 font-semibold text-base px-8 py-6"
+                className="border-foreground/30 text-foreground hover:bg-foreground/10 font-semibold text-base px-6 py-4 md:px-8 md:py-6 w-full sm:w-auto"
               >
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <Phone className="mr-2 w-5 h-5" />

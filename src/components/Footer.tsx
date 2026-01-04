@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
-import logoZafir from "@/assets/logo-zafir.png";
+import logoZafir from "@/assets/logo-zafir-transparent.png";
 import bacenLogo from "@/assets/bacen-logo.jpg";
 import lgpdLogo from "@/assets/lgpd-logo.png";
 
@@ -50,7 +50,7 @@ export const Footer = () => {
               <img
                 src={logoZafir}
                 alt="Zafir Invest"
-                className="h-10 md:h-32 w-auto"
+                className="h-20 md:h-32 w-auto"
               />
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">

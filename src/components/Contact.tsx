@@ -35,7 +35,7 @@ export const Contact = () => {
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-10" />
       {/* Bottom gradient for section transition */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10" />
-      
+
       {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
@@ -126,7 +126,7 @@ export const Contact = () => {
               <Button
                 asChild
                 size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 w-full sm:w-auto animate-pulse hover:animate-none"
+                className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-4 md:px-8 md:py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105 w-full sm:w-auto animate-pulse hover:animate-none"
               >
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 w-5 h-5" />
@@ -145,7 +145,7 @@ export const Contact = () => {
           >
             {/* Yellow Blur Effect */}
             <div className="absolute -inset-4 bg-primary/20 rounded-3xl blur-2xl opacity-60" />
-            
+
             <form onSubmit={handleSubmit} className="relative glass-card p-6 md:p-8">
               <h3 className="text-xl font-display font-bold text-foreground mb-6">
                 Solicite sua simulação gratuita
@@ -216,7 +216,7 @@ export const Contact = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold py-6 shadow-lg hover:shadow-xl transition-all"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold py-4 md:py-6 shadow-lg hover:shadow-xl transition-all"
                 >
                   <Send className="mr-2 w-5 h-5" />
                   Enviar Solicitação
