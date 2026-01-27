@@ -51,7 +51,7 @@ export const Footer = () => {
               <OptimizedImage
                 src={logoZafir}
                 alt="Zafir Invest"
-                className="h-20 md:h-32 w-auto"
+                className="h-16 md:h-28 w-auto object-contain"
               />
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">

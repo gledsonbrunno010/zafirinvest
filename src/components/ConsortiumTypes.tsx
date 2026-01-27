@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Home, Car, Truck, Cog, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Particles from "@/components/ui/Particles";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import heroHouse from "@/assets/hero-house.jpg";
 import heroVehicles from "@/assets/hero-vehicles.jpg";
 import heroTruck from "@/assets/hero-truck.jpg";
@@ -113,9 +114,14 @@ export const ConsortiumTypes = () => {
                 {/* Background Image */}
                 <motion.div
                   layoutId={`image-${type.title}`}
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${type.image})` }}
-                />
+                  className="absolute inset-0"
+                >
+                  <OptimizedImage
+                    src={type.image}
+                    alt={type.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </motion.div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
                 {/* Content */}
@@ -190,9 +196,14 @@ export const ConsortiumTypes = () => {
               <div className="aspect-video w-full relative">
                 <motion.div
                   layoutId={`image-${selectedType.title}`}
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${selectedType.image})` }}
-                />
+                  className="absolute inset-0"
+                >
+                  <OptimizedImage
+                    src={selectedType.image}
+                    alt={selectedType.title}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
               </div>
 
               <div className="p-8 bg-card border-t border-border">

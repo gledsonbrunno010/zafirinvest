@@ -61,7 +61,7 @@ export const Navbar = () => {
             <OptimizedImage
               src={logoZafir}
               alt="Zafir Invest"
-              className="h-14 md:h-20 w-auto"
+              className="h-10 md:h-16 w-auto object-contain"
             />
           </motion.a>
 
