@@ -4,6 +4,7 @@ import { useRef } from "react";
 import bacenLogo from "@/assets/logo-bacen-hq.png";
 import abacLogo from "@/assets/logo-abac-original.png";
 import lgpdLogo from "@/assets/logo-lgpd-final.svg";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 
 const certifications = [
   {
@@ -56,7 +57,7 @@ export const Partners = () => {
                 className="group relative"
               >
                 <div className="relative w-40 h-40 md:w-56 md:h-56 flex items-center justify-center transition-all duration-300 hover:scale-105">
-                  <img
+                  <OptimizedImage
                     src={cert.image}
                     alt={cert.name}
                     className={`w-full h-full object-contain transition-all duration-300 ${cert.className}`}

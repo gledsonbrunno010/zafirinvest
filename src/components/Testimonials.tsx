@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Star } from "lucide-react";
 import Particles from "@/components/ui/Particles";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 
 // Import testimonial images
 import carlosSilva from "@/assets/testimonials/carlos-silva.jpg";
@@ -192,7 +193,7 @@ export const Testimonials = () => {
                 {/* Author with Photo */}
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img
+                    <OptimizedImage
                       src={testimonial.image}
                       alt={testimonial.name}
                       className="w-full h-full object-cover"

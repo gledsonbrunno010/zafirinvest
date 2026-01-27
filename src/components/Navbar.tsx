@@ -4,6 +4,8 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoZafir from "@/assets/logo-zafir-final.svg";
 
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
+
 const navLinks = [
   { label: "Início", href: "#inicio" },
   { label: "Consórcios", href: "#consorcios" },
@@ -21,10 +23,20 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isScrolled = window.scrollY > 50;
+          setScrolled(isScrolled);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -46,7 +58,7 @@ export const Navbar = () => {
             className="flex items-center gap-2"
             whileHover={{ scale: 1.02 }}
           >
-            <img
+            <OptimizedImage
               src={logoZafir}
               alt="Zafir Invest"
               className="h-14 md:h-20 w-auto"

@@ -3,6 +3,7 @@ import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 import logoZafir from "@/assets/logo-zafir-final.svg";
 import bacenLogo from "@/assets/bacen-logo.jpg";
 import lgpdLogo from "@/assets/logo-lgpd-silver-clean.png";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 
 const footerLinks = {
   company: [
@@ -47,7 +48,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
             <a href="#inicio" className="inline-block mb-4">
-              <img
+              <OptimizedImage
                 src={logoZafir}
                 alt="Zafir Invest"
                 className="h-20 md:h-32 w-auto"
@@ -142,7 +143,7 @@ export const Footer = () => {
                   key={cert.name}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 border border-border/30"
                 >
-                  <img
+                  <OptimizedImage
                     src={cert.image}
                     alt={cert.name}
                     className="h-6 w-auto object-contain grayscale opacity-70"
