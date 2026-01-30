@@ -4,7 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoZafir from "@/assets/logo-zafir-final.svg";
 
-import { OptimizedImage } from "@/components/ui/OptimizedImage";
+
 
 const navLinks = [
   { label: "Início", href: "#inicio" },
@@ -58,7 +58,7 @@ export const Navbar = () => {
             className="flex items-center gap-2"
             whileHover={{ scale: 1.02 }}
           >
-            <OptimizedImage
+            <img
               src={logoZafir}
               alt="Zafir Invest"
               className="h-10 md:h-16 w-auto object-contain"
